@@ -1,16 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
   CalendarDays,
+  ChevronLeft,
   ChevronRight,
   Droplets,
   Flower2,
-  Leaf,
   MapPin,
   Menu,
   MessageCircle,
@@ -22,7 +22,6 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import ShaderHero from './ShaderHero';
-import LiquidMetalLogo from './LiquidMetalLogo';
 
 const MIN_PLOT_AREA = 3000;
 const PROJECT_RATE = 750;
@@ -104,6 +103,74 @@ const connectivity = [
   ['Site visit', 'Call the team for current availability and route guidance'],
 ];
 
+const galleryImages = [
+  {
+    src: '/gallery/demarcated-plots-overview.jpg',
+    title: 'Demarcated plots',
+    alt: 'Demarcated plots and internal access at the Nargoli, Dapoli site',
+  },
+  {
+    src: '/gallery/site-plantation-overview.jpg',
+    title: 'Plantation work',
+    alt: 'Young plantings across the green Nargoli site',
+  },
+  {
+    src: '/gallery/site-inspection-planting.jpg',
+    title: 'Green plot setting',
+    alt: 'Prepared plot with new planting beside the wooded hillside',
+  },
+  {
+    src: '/gallery/levelled-plot-forest-edge.jpg',
+    title: 'Forest-edge plot',
+    alt: 'Levelled plot at the edge of the forest',
+  },
+  {
+    src: '/gallery/site-inspection-hillside.jpg',
+    title: 'Hillside inspection',
+    alt: 'Visitors inspecting the hillside plots at the site',
+  },
+  {
+    src: '/gallery/access-road-hillside.jpg',
+    title: 'Hillside access',
+    alt: 'Site access road with green hills in the background',
+  },
+  {
+    src: '/gallery/site-development-work.jpg',
+    title: 'Site development',
+    alt: 'Stone work and site development in progress',
+  },
+  {
+    src: '/gallery/site-development-materials.jpg',
+    title: 'On-site works',
+    alt: 'Site development materials and drainage pipes',
+  },
+  {
+    src: '/gallery/rainy-valley-view.jpg',
+    title: 'Monsoon valley view',
+    alt: 'Rainy view across the forested valley from the site',
+  },
+  {
+    src: '/gallery/rainy-valley-view-alt.jpg',
+    title: 'Valley in the rain',
+    alt: 'Alternate monsoon view across the forested valley',
+  },
+  {
+    src: '/gallery/levelled-plot-boundary.jpg',
+    title: 'Prepared plot boundary',
+    alt: 'Levelled plot with low boundary edging and trees',
+  },
+  {
+    src: '/gallery/levelled-plot-trees.jpg',
+    title: 'Prepared plot among trees',
+    alt: 'Levelled plot with boundary edging among mature trees',
+  },
+  {
+    src: '/gallery/site-plot-hillside.jpg',
+    title: 'Site overlook',
+    alt: 'View across prepared plots toward the green hillside',
+  },
+];
+
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <p className="section-kicker mb-4 flex items-center gap-3">
@@ -154,17 +221,49 @@ function LeadForm({ compact = false, onSuccess }: { compact?: boolean; onSuccess
 export default function NargoliTownshipLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [visitModalOpen, setVisitModalOpen] = useState(false);
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState<number | null>(null);
   const [area, setArea] = useState(MIN_PLOT_AREA);
   const plotCost = area * PROJECT_RATE;
+  const selectedGalleryImage = selectedGalleryIndex === null ? null : galleryImages[selectedGalleryIndex];
+
+  useEffect(() => {
+    if (selectedGalleryIndex === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedGalleryIndex(null);
+      }
+
+      if (event.key === 'ArrowLeft') {
+        setSelectedGalleryIndex((currentIndex) =>
+          currentIndex === null ? null : (currentIndex - 1 + galleryImages.length) % galleryImages.length,
+        );
+      }
+
+      if (event.key === 'ArrowRight') {
+        setSelectedGalleryIndex((currentIndex) =>
+          currentIndex === null ? null : (currentIndex + 1) % galleryImages.length,
+        );
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedGalleryIndex]);
 
   return (
     <main className="overflow-hidden bg-[#FAF7F2] text-[#16352a]">
       <header className="glass-panel fixed inset-x-0 top-0 z-40 border-b border-white/15 text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
           <a href="#top" className="flex items-center gap-3 text-sm font-semibold">
-            <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-[#D97757] text-[#FAF7F2]">
-              <LiquidMetalLogo />
-              <Leaf className="relative z-10" size={18} />
+            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[#d9b77f]/70 bg-[#f8f2e5]">
+              <Image
+                src="/om-sai-developers-logo.jpg"
+                alt="Om Sai Developers logo"
+                fill
+                sizes="40px"
+                className="object-cover"
+              />
             </span>
             <span>
               Om Sai Developers
@@ -176,6 +275,7 @@ export default function NargoliTownshipLanding() {
           <nav className="hidden items-center gap-7 text-xs font-semibold text-[#e6efe7] lg:flex">
             <a href="#highlights">Highlights</a>
             <a href="#amenities">Amenities</a>
+            <a href="#gallery">Gallery</a>
             <a href="#master-plan">Blueprint</a>
             <a href="#location">Location</a>
             <a href="#calculator">Calculator</a>
@@ -197,6 +297,9 @@ export default function NargoliTownshipLanding() {
             </a>
             <a onClick={() => setMenuOpen(false)} href="#amenities" className="block">
               Amenities
+            </a>
+            <a onClick={() => setMenuOpen(false)} href="#gallery" className="block">
+              Gallery
             </a>
             <a onClick={() => setMenuOpen(false)} href="#master-plan" className="block">
               Blueprint
@@ -340,6 +443,49 @@ export default function NargoliTownshipLanding() {
                 <h3 className="text-lg font-bold">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#d6dfd9]">{copy}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" className="section-space border-b border-[#d9d8ce] bg-[#f0ede5]" aria-labelledby="gallery-title">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <SectionLabel>On-site gallery</SectionLabel>
+              <h2 id="gallery-title" className="heading">
+                See the site, <span>before your visit.</span>
+              </h2>
+              <p className="body-copy mt-4">
+                Explore recent views of the plotted layout, green surroundings and on-site development at Nargoli,
+                Dapoli.
+              </p>
+            </div>
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#66766a]">
+              {galleryImages.length} site photos · Select to enlarge
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-5">
+            {galleryImages.map((image, index) => (
+              <button
+                key={image.src}
+                type="button"
+                onClick={() => setSelectedGalleryIndex(index)}
+                aria-label={`Open photo: ${image.title}`}
+                className="group relative aspect-[4/3] overflow-hidden bg-[#203e34] text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b58a53]"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#102e24]/90 via-[#102e24]/45 to-transparent px-3 pb-3 pt-10 text-xs font-bold text-white opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  {image.title}
+                </span>
+              </button>
             ))}
           </div>
         </div>
@@ -566,8 +712,14 @@ export default function NargoliTownshipLanding() {
           <div className="flex flex-col justify-between gap-8 border-b border-white/10 pb-10 md:flex-row">
             <div>
               <div className="flex items-center gap-3 text-white">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-[#D97757]">
-                  <Leaf size={18} />
+                <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[#d9b77f]/70 bg-[#f8f2e5]">
+                  <Image
+                    src="/om-sai-developers-logo.jpg"
+                    alt="Om Sai Developers logo"
+                    fill
+                    sizes="40px"
+                    className="object-cover"
+                  />
                 </span>
                 <strong>Om Sai Developers</strong>
               </div>
@@ -578,6 +730,7 @@ export default function NargoliTownshipLanding() {
             <div className="flex flex-wrap gap-x-8 gap-y-3 text-xs">
               <a href="#top">Back to top</a>
               <a href="#contact">Request details</a>
+              <a href="#gallery">View gallery</a>
               <a href="/plot-blueprint-hd.jpg" target="_blank" rel="noreferrer">
                 Open blueprint
               </a>
@@ -624,6 +777,73 @@ export default function NargoliTownshipLanding() {
             </p>
             <div className="mt-7">
               <LeadForm onSuccess={() => setVisitModalOpen(false)} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedGalleryImage && selectedGalleryIndex !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedGalleryImage.title} photo`}
+          className="fixed inset-0 z-50 grid place-items-center bg-[#0c211a]/90 p-4 backdrop-blur-sm md:p-8"
+          onClick={() => setSelectedGalleryIndex(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl overflow-hidden bg-[#102e24] shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="relative aspect-[4/3] w-full bg-[#0a1a15]">
+              <Image
+                src={selectedGalleryImage.src}
+                alt={selectedGalleryImage.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 80vw"
+                className="object-contain"
+              />
+            </div>
+            <div className="flex items-center justify-between gap-4 bg-[#102e24] px-5 py-4 text-white md:px-6">
+              <div>
+                <p className="text-sm font-bold">{selectedGalleryImage.title}</p>
+                <p className="mt-1 text-xs text-[#c5d8c8]">
+                  {selectedGalleryIndex + 1} of {galleryImages.length}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  aria-label="Previous photo"
+                  onClick={() =>
+                    setSelectedGalleryIndex((currentIndex) =>
+                      currentIndex === null ? null : (currentIndex - 1 + galleryImages.length) % galleryImages.length,
+                    )
+                  }
+                  className="grid h-10 w-10 place-items-center border border-white/20 text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f4bd9e]"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next photo"
+                  onClick={() =>
+                    setSelectedGalleryIndex((currentIndex) =>
+                      currentIndex === null ? null : (currentIndex + 1) % galleryImages.length,
+                    )
+                  }
+                  className="grid h-10 w-10 place-items-center border border-white/20 text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f4bd9e]"
+                >
+                  <ChevronRight size={20} />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Close gallery"
+                  onClick={() => setSelectedGalleryIndex(null)}
+                  className="grid h-10 w-10 place-items-center border border-white/20 text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f4bd9e]"
+                >
+                  <X size={20} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
