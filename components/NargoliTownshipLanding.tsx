@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -176,48 +176,84 @@ function SectionLabel({ children }: { children: ReactNode }) {
 }
 
 function LeadForm({ compact = false, onSuccess }: { compact?: boolean; onSuccess?: () => void }) {
+  const formId = useId();
+  const [submitted, setSubmitted] = useState(false);
+
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSubmitted(true);
     onSuccess?.();
   };
 
   return (
     <form onSubmit={submit} className={compact ? 'flex flex-col gap-3 lg:flex-row' : 'space-y-4'}>
-      <input required name="name" placeholder="Your name" className="field" />
+      <label className="sr-only" htmlFor={`${formId}-name`}>Your name</label>
       <input
+        id={`${formId}-name`}
+        required
+        name="name"
+        minLength={2}
+        maxLength={80}
+        autoComplete="name"
+        placeholder="Your name"
+        className="field"
+      />
+      <label className="sr-only" htmlFor={`${formId}-phone`}>WhatsApp number</label>
+      <input
+        id={`${formId}-phone`}
         required
         name="phone"
         type="tel"
         inputMode="tel"
         pattern="[0-9]{10,15}"
         title="Enter a valid phone number with at least 10 digits."
+        autoComplete="tel"
         placeholder="WhatsApp number"
         className="field"
       />
       {compact && (
-        <select required name="size" defaultValue="" className="field">
+        <>
+          <label className="sr-only" htmlFor={`${formId}-size`}>Preferred plot size</label>
+          <select id={`${formId}-size`} required name="size" defaultValue="" className="field">
           <option value="" disabled>
             Preferred plot size
           </option>
           <option>Minimum 3,000 sq. ft.</option>
           <option>3,000 - 5,000 sq. ft.</option>
           <option>5,000+ sq. ft.</option>
-        </select>
+          </select>
+        </>
       )}
       {!compact && (
         <>
-          <input name="email" type="email" placeholder="Email address" className="field" />
-          <select name="horizon" defaultValue="Immediate" className="field">
+          <label className="sr-only" htmlFor={`${formId}-email`}>Email address</label>
+          <input
+            id={`${formId}-email`}
+            name="email"
+            type="email"
+            maxLength={254}
+            autoComplete="email"
+            placeholder="Email address"
+            className="field"
+          />
+          <label className="sr-only" htmlFor={`${formId}-horizon`}>Purchase timeline</label>
+          <select id={`${formId}-horizon`} name="horizon" defaultValue="Immediate" className="field">
             <option>Immediate</option>
             <option>Within 3 months</option>
             <option>Just exploring</option>
           </select>
-          <input name="visitDate" type="date" className="field" />
+          <label className="sr-only" htmlFor={`${formId}-visit-date`}>Preferred site visit date</label>
+          <input id={`${formId}-visit-date`} name="visitDate" type="date" className="field" />
         </>
       )}
       <button className={compact ? 'button-primary whitespace-nowrap' : 'button-primary w-full'} type="submit">
         {compact ? 'Get project details' : 'Request a site visit'} <ArrowUpRight size={16} />
       </button>
+      {!compact && submitted && (
+        <p role="status" className="text-xs leading-5 text-[#536358]">
+          Your details were not sent online. Please call 9699657121 or 8483857121 to continue your enquiry.
+        </p>
+      )}
     </form>
   );
 }
@@ -266,6 +302,7 @@ export default function NargoliTownshipLanding() {
                 alt="Om Sai Developers logo"
                 fill
                 sizes="40px"
+                priority
                 className="object-cover"
               />
             </span>
@@ -289,13 +326,19 @@ export default function NargoliTownshipLanding() {
             <button onClick={() => setVisitModalOpen(true)} className="button-light hidden sm:flex">
               Book site visit <ArrowUpRight size={15} />
             </button>
-            <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Open navigation" className="lg:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              className="lg:hidden"
+            >
               <Menu size={22} />
             </button>
           </div>
         </div>
         {menuOpen && (
-          <nav className="space-y-4 border-t border-white/10 px-5 py-5 text-sm lg:hidden">
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className="space-y-4 border-t border-white/10 px-5 py-5 text-sm lg:hidden">
             <a onClick={() => setMenuOpen(false)} href="#highlights" className="block">
               Highlights
             </a>
