@@ -31,18 +31,18 @@ html { scroll-behavior: smooth; }
 .glass-panel { border: 1px solid rgba(255,255,255,.18); background: rgba(25,43,44,.72); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 20px 50px rgba(15,26,29,.2); backdrop-filter: blur(20px) saturate(1.1); -webkit-backdrop-filter: blur(20px) saturate(1.1); }
 .highlight-card, .luxury-card { border: 1px solid #e1e2dc; background: #fbfaf6; box-shadow: 0 2px 4px rgba(23,37,42,.03), 0 18px 38px rgba(23,37,42,.07); transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
 .highlight-card:hover, .luxury-card:hover { transform: translateY(-2px); border-color: #c7b18e; box-shadow: 0 4px 8px rgba(23,37,42,.04), 0 24px 48px rgba(23,37,42,.1); }
-.section-kicker { color: #b58a53; font-size: .7rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-.section-title { font-family: var(--font-heading), sans-serif; font-weight: 700; letter-spacing: -.035em; }
+.section-kicker { color: #b58a53; font-size: .7rem; font-weight: 800; letter-spacing: 0; text-transform: uppercase; }
+.section-title { font-family: var(--font-heading), sans-serif; font-weight: 700; letter-spacing: 0; }
 .builder-proof { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; color: #dce9dc; font-size: .7rem; line-height: 1.4; }
 .builder-proof span { display: flex; align-items: baseline; gap: .3rem; }
 .builder-proof strong { color: #f4bd9e; font-size: .9rem; }
 
 @layer components {
   .section-space { padding-block: 5rem; }
-  .heading { font-family: var(--font-heading), sans-serif; font-size: clamp(2.35rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.02; letter-spacing: -.045em; }
+  .heading { font-family: var(--font-heading), sans-serif; font-size: 2.35rem; font-weight: 700; line-height: 1.02; letter-spacing: 0; }
   .heading span { color: #b58a53; }
   .body-copy { max-width: 32rem; color: #526267; font-size: .95rem; line-height: 1.8; }
-  .button-primary, .button-light, .button-outline { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .9rem 1.2rem; font-size: .72rem; font-weight: 800; letter-spacing: .04em; transition: all .3s ease; }
+  .button-primary, .button-light, .button-outline { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .9rem 1.2rem; font-size: .72rem; font-weight: 800; letter-spacing: 0; transition: all .3s ease; }
   .button-primary { background: #b58a53; color: #fffdf8; box-shadow: 0 8px 18px rgba(181,138,83,.22); }
   .button-primary:hover, .button-light:hover, .button-outline:hover { transform: translateY(-2px); }
   .button-primary:hover { background: #9e743f; box-shadow: 0 12px 24px rgba(181,138,83,.3); }
@@ -50,19 +50,16 @@ html { scroll-behavior: smooth; }
   .button-outline { border: 1px solid #b9bdb5; color: #213c38; }
   .field { min-height: 3rem; width: 100%; border: 1px solid #cbd3c8; background: #FAF7F2; padding: .75rem .9rem; font-size: .8rem; color: #16352a; outline: none; }
   .field:focus { border-color: #D97757; box-shadow: 0 0 0 2px #D9775722; }
-  .status-dot { display: inline-block; height: .55rem; width: .55rem; margin-right: .35rem; border-radius: 999px; }
-  .plot { position: relative; z-index: 1; display: flex; min-height: 6.6rem; flex-direction: column; justify-content: center; border: 1px solid #b6c6b4; padding: .75rem; text-align: left; color: #1b4332; transition: transform .2s, box-shadow .2s; }
-  .plot-available { background: #d7e7d5; cursor: pointer; }
-  .plot-available:hover { transform: translateY(-3px); box-shadow: 0 8px 18px #61836533; }
-  .plot-booked { background: #f2e7bd; color: #79672d; }
-  .plot-sold { background: #efd3cb; color: #8e4d42; }
-  .plot span, .plot small { font-size: .65rem; }
-  .plot strong { font-size: 1.25rem; }
   input[type="range"] { accent-color: #b58a53; width: 100%; }
 }
 
 @media (min-width: 768px) {
   .section-space { padding-block: 6rem; }
+  .heading { font-size: 3.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .heading { font-size: 4.5rem; }
 }
 
 .amenity-card { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.045); padding: 1.35rem; transition: all .3s ease; }
