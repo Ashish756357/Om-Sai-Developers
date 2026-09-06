@@ -184,7 +184,16 @@ function LeadForm({ compact = false, onSuccess }: { compact?: boolean; onSuccess
   return (
     <form onSubmit={submit} className={compact ? 'flex flex-col gap-3 lg:flex-row' : 'space-y-4'}>
       <input required name="name" placeholder="Your name" className="field" />
-      <input required name="phone" type="tel" placeholder="WhatsApp number" className="field" />
+      <input
+        required
+        name="phone"
+        type="tel"
+        inputMode="tel"
+        pattern="[0-9]{10,15}"
+        title="Enter a valid phone number with at least 10 digits."
+        placeholder="WhatsApp number"
+        className="field"
+      />
       {compact && (
         <select required name="size" defaultValue="" className="field">
           <option value="" disabled>
