@@ -164,11 +164,6 @@ const galleryImages = [
     title: 'Prepared plot among trees',
     alt: 'Levelled plot with boundary edging among mature trees',
   },
-  {
-    src: '/gallery/site-plot-hillside.jpg',
-    title: 'Site overlook',
-    alt: 'View across prepared plots toward the green hillside',
-  },
 ];
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -461,9 +456,6 @@ export default function NargoliTownshipLanding() {
                 Dapoli.
               </p>
             </div>
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#66766a]">
-              {galleryImages.length} site photos · Select to enlarge
-            </p>
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-5">
@@ -724,7 +716,7 @@ export default function NargoliTownshipLanding() {
                 <strong>Om Sai Developers</strong>
               </div>
               <p className="mt-4 max-w-xs text-sm leading-6">
-                10-acre township plots in Nargoli, Dapoli, from 3,000 sq. ft. at ₹750 / sq. ft.
+                10-acre township plots in Nargoli, Dapoli with internal roads, utilities, garden, swimming pool and club house amenities planned for the township.
               </p>
             </div>
             <div className="flex flex-wrap gap-x-8 gap-y-3 text-xs">
