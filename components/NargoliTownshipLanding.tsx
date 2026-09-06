@@ -27,7 +27,7 @@ const MIN_PLOT_AREA = 3000;
 const PROJECT_RATE = 750;
 const minimumPlotCost = MIN_PLOT_AREA * PROJECT_RATE;
 
-const whatsappUrl = `https://wa.me/919699657121?text=${encodeURIComponent(
+const whatsappUrl = `https://wa.me/9082313345?text=${encodeURIComponent(
   "Hello Om Sai Developers, I'd like to know more about the 10-acre township plots at Nargoli, Dapoli.",
 )}`;
 
@@ -101,6 +101,25 @@ const connectivity = [
   ['230 km', 'From Mumbai to Nargoli, Dapoli'],
   ['Nargoli', 'Township location in Dapoli'],
   ['Site visit', 'Call the team for current availability and route guidance'],
+];
+
+const faqItems = [
+  {
+    question: 'Where are the township plots located?',
+    answer: 'The plotted township is located in Nargoli, Dapoli, District Ratnagiri, Maharashtra.',
+  },
+  {
+    question: 'What is the minimum plot size?',
+    answer: 'The minimum plot size is 3,000 sq. ft. Buyers should confirm current availability and plot details with the Om Sai Developers team.',
+  },
+  {
+    question: 'What is the quoted plot rate?',
+    answer: 'The displayed reference rate is ₹750 per sq. ft. Registration, taxes, development charges and availability can affect the final amount.',
+  },
+  {
+    question: 'How can I arrange a site visit?',
+    answer: 'Call 9699657121 or 8483857121 to ask about availability and coordinate a site visit.',
+  },
 ];
 
 const galleryImages = [
@@ -673,6 +692,25 @@ export default function NargoliTownshipLanding() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="section-space border-y border-[#d9d8ce] bg-[#f0ede5]" aria-labelledby="faq-title">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="max-w-2xl">
+            <SectionLabel>Buyer questions</SectionLabel>
+            <h2 id="faq-title" className="heading">
+              Plan your visit with <span>clear answers.</span>
+            </h2>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {faqItems.map(({ question, answer }) => (
+              <details key={question} className="highlight-card p-6">
+                <summary className="cursor-pointer list-none pr-6 text-base font-bold text-[#16352a]">{question}</summary>
+                <p className="mt-4 text-sm leading-6 text-[#405247]">{answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
