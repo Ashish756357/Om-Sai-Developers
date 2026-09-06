@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swa
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-heading", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Om Sai Developers | Bungalow Plots in Boisar East",
-  description: "Secure clear-title bungalow plots from 2,000 sq. ft. at Village Gundhle, Boisar East, across 77 acres of green countryside.",
+  title: "Om Sai Developers | Township Plots in Nargoli, Dapoli",
+  description: "Explore 10-acre township plots in Nargoli, Dapoli, from 3,000 sq. ft. at ₹750 per sq. ft., 210 km from Pune and 230 km from Mumbai.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

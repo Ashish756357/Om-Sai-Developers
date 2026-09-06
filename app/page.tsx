@@ -1,5 +1,5 @@
-import SerenePalmsLanding from "@/components/SerenePalmsLanding";
+import NargoliTownshipLanding from "@/components/NargoliTownshipLanding";
 
 export default function Home() {
-  return <SerenePalmsLanding />;
+  return <NargoliTownshipLanding />;
 }
