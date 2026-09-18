@@ -41,6 +41,56 @@ body {
   font-weight: 700;
   letter-spacing: .08em;
 }
+.maintenance-art {
+  position: relative;
+  width: 11rem;
+  height: 7rem;
+  margin-bottom: 1.5rem;
+  animation: maintenance-float 4s ease-in-out infinite;
+}
+.receipt-art {
+  position: absolute;
+  top: .25rem;
+  left: 2.2rem;
+  display: grid;
+  width: 5rem;
+  height: 6rem;
+  align-content: center;
+  justify-items: center;
+  gap: .5rem;
+  transform: rotate(-8deg);
+  border: 1px solid rgba(248, 247, 243, .65);
+  background: rgba(248, 247, 243, .1);
+  box-shadow: 0 .8rem 1.5rem rgba(0, 0, 0, .15);
+}
+.receipt-art::after {
+  position: absolute;
+  right: -.05rem;
+  bottom: -.35rem;
+  left: -.05rem;
+  height: .7rem;
+  background: linear-gradient(135deg, transparent 50%, #163c31 50%) 0 0 / .7rem .7rem repeat-x;
+  content: "";
+}
+.receipt-art strong { color: #f4bd9e; font-size: 1.3rem; }
+.receipt-line { display: block; width: 2.2rem; height: .18rem; background: rgba(220, 233, 220, .6); }
+.receipt-line-long { width: 3rem; }
+.receipt-line-short { width: 1.5rem; }
+.coin-art {
+  position: absolute;
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border: 2px solid #f4bd9e;
+  border-radius: 50%;
+  color: #f4bd9e;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.coin-art-back { right: .8rem; bottom: .45rem; opacity: .45; }
+.coin-art-front { right: 1.9rem; bottom: -.2rem; background: #163c31; animation: coin-nudge 2.5s ease-in-out infinite; }
 .maintenance-page .section-kicker { color: #f4bd9e; }
 .maintenance-page h1 {
   max-width: 42rem;
@@ -48,6 +98,7 @@ body {
   font-family: var(--font-heading), sans-serif;
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   line-height: 1;
+  animation: maintenance-reveal .7s ease-out both;
 }
 .maintenance-copy {
   max-width: 31rem;
@@ -55,6 +106,7 @@ body {
   color: #dce9dc;
   font-size: 1rem;
   line-height: 1.75;
+  animation: maintenance-reveal .7s .12s ease-out both;
 }
 .maintenance-alert {
   max-width: 31rem;
@@ -63,6 +115,7 @@ body {
   font-size: .95rem;
   font-weight: 700;
   line-height: 1.6;
+  animation: maintenance-reveal .7s .2s ease-out both;
 }
 .maintenance-note {
   margin: 2.5rem 0 0;
@@ -71,6 +124,23 @@ body {
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
+}
+@keyframes maintenance-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-.45rem) rotate(1deg); }
+}
+@keyframes coin-nudge {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(.3rem) rotate(8deg); }
+}
+@keyframes maintenance-reveal {
+  from { opacity: 0; transform: translateY(.8rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .maintenance-art, .coin-art-front, .maintenance-page h1, .maintenance-copy, .maintenance-alert {
+    animation: none;
+  }
 }
 
 h1, h2, h3, h4, button, nav a { font-family: var(--font-heading), sans-serif; }
