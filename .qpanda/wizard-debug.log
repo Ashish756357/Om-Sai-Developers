@@ -1,0 +1,122 @@
+[2026-09-06T14:03:45.940Z] INIT: wizardEl=true
+[2026-09-06T14:03:45.941Z] STATE: savedState=null
+[2026-09-06T14:03:45.941Z] PRE-READY DOM: wizard.display=""
+[2026-09-06T14:03:45.942Z] READY sent: runId=null panelId=null readySessionId=7975fdaf-2690-42f8-b566-08dc5f23e91e
+[2026-09-06T14:03:45.942Z] EXT-HOST: ready message received repoRoot=/run/media/ashish/EC705044705017A2/Builders runId= panelId= readySessionId=7975fdaf-2690-42f8-b566-08dc5f23e91e
+[2026-09-06T14:03:45.982Z] MSG received: type=flushStream hasHandler=true
+[2026-09-06T14:03:45.982Z] MSG received: type=banner hasHandler=true
+[2026-09-06T14:03:45.983Z] MSG received: type=flushStream hasHandler=true
+[2026-09-06T14:03:45.983Z] MSG received: type=banner hasHandler=true
+[2026-09-06T14:03:45.984Z] MSG received: type=flushStream hasHandler=true
+[2026-09-06T14:03:45.984Z] MSG received: type=banner hasHandler=true
+[2026-09-06T14:03:45.985Z] MSG received: type=readyAck hasHandler=true
+[2026-09-06T14:03:45.985Z] MSG received: type=syncConfig hasHandler=true
+[2026-09-06T14:03:45.985Z] saveState: {"runId":null,"panelId":null,"workspace":null,"resume":null,"rootIdentity":null,"chatTarget":"controller"}
+[2026-09-06T14:03:45.986Z] MSG received: type=syncConfig hasHandler=true
+[2026-09-06T14:03:45.986Z] saveState: {"runId":null,"panelId":null,"workspace":null,"resume":null,"rootIdentity":null,"chatTarget":"controller"}
+[2026-09-06T14:03:45.986Z] MSG received: type=readyAck hasHandler=true
+[2026-09-06T14:03:45.986Z] MSG received: type=initConfig hasHandler=true
+[2026-09-06T14:03:45.986Z] initConfig received: panelId=15d6a9e0-4903-49bf-a68d-e74d440cfd7b
+[2026-09-06T14:03:45.987Z] saveState: {"runId":null,"panelId":"15d6a9e0-4903-49bf-a68d-e74d440cfd7b","workspace":null,"resume":null,"rootIdentity":"repo:/run/media/ashish/EC705044705017A2/Builders","chatTarget":"controller"}
+[2026-09-06T14:03:45.987Z] initConfig: onboardingComplete=false
+[2026-09-06T14:03:45.988Z] initConfig DECISION: onboardingComplete=false
+[2026-09-06T14:03:45.988Z] showInitWizard() called, onboardingComplete=false
+[2026-09-06T14:03:46.134Z] saveState: {"runId":null,"panelId":"15d6a9e0-4903-49bf-a68d-e74d440cfd7b","workspace":null,"resume":null,"rootIdentity":"repo:/run/media/ashish/EC705044705017A2/Builders","chatTarget":"controller"}
+[2026-09-06T14:03:46.167Z] MSG received: type=syncConfig hasHandler=true
+[2026-09-06T14:03:46.168Z] saveState: {"runId":null,"panelId":"15d6a9e0-4903-49bf-a68d-e74d440cfd7b","workspace":null,"resume":null,"rootIdentity":"repo:/run/media/ashish/EC705044705017A2/Builders","chatTarget":"controller"}
+[2026-09-06T14:03:46.173Z] EXT-HOST: initConfig posted panelId=15d6a9e0-4903-49bf-a68d-e74d440cfd7b runId= readySessionId=7975fdaf-2690-42f8-b566-08dc5f23e91e
+[2026-09-06T14:03:46.178Z] [codex-appserver] prestartConnection key=panel:15d6a9e0-4903-49bf-a68d-e74d440cfd7b:controller:no-browser panelId=15d6a9e0-4903-49bf-a68d-e74d440cfd7b
+[2026-09-06T14:03:46.179Z] [codex-appserver] connect:start cwd=/run/media/ashish/EC705044705017A2/Builders bin=codex configArgs=["-c","mcp_servers.cc_tasks.url=\"http://localhost:33047/mcp\"","-c","mcp_servers.cc_tasks.startup_timeout_sec=30","-c","mcp_servers.cc_tests.url=\"http://localhost:36043/mcp\"","-c","mcp_servers.cc_tests.startup_timeout_sec=30","-c","mcp_servers.cc_memory.url=\"http://localhost:37103/mcp\"","-c","mcp_servers.cc_memory.startup_timeout_sec=30","-c","mcp_servers.cc_agent_delegate.url=\"http://localhost:41615/mcp\"","-c","mcp_servers.cc_agent_delegate.startup_timeout_sec=30","-c","mcp_servers.cc_agent_delegate.tool_timeout_sec=600","-c","mcp_servers.detached_command.command=\"node\"","-c","mcp_servers.detached_command.args=[\"/home/ashish/.vscode/extensions/qapandaapp.qapanda-vscode-0.3.4/detached-command-mcp/dist/index.js\"]","-c","mcp_servers.detached_command.env.DETACHED_BASH_MCP_DATA_DIR=\"/run/media/ashish/EC705044705017A2/Builders/.qpanda/.detached-jobs\"","-c","mcp_servers.detached_command.startup_timeout_sec=30","-c","features.shell_tool=false","-c","features.tool_search=false","-c","features.search_tool=false","-c","features.tool_search_always_defer_mcp_tools=false"]
+[2026-09-06T14:03:46.212Z] [codex-appserver] sendRequest:start method=initialize id=1 threadId=null turnId=null
+[2026-09-06T14:03:46.214Z] [codex-appserver] prestartConnection key=panel:15d6a9e0-4903-49bf-a68d-e74d440cfd7b:worker:no-browser panelId=15d6a9e0-4903-49bf-a68d-e74d440cfd7b
+[2026-09-06T14:03:46.214Z] [codex-appserver] connect:start cwd=/run/media/ashish/EC705044705017A2/Builders bin=codex configArgs=["-c","mcp_servers.cc_tasks.url=\"http://localhost:33047/mcp\"","-c","mcp_servers.cc_tasks.startup_timeout_sec=30","-c","mcp_servers.cc_tests.url=\"http://localhost:36043/mcp\"","-c","mcp_servers.cc_tests.startup_timeout_sec=30","-c","mcp_servers.cc_memory.url=\"http://localhost:37103/mcp\"","-c","mcp_servers.cc_memory.startup_timeout_sec=30","-c","mcp_servers.cc_agent_delegate.url=\"http://localhost:41615/mcp\"","-c","mcp_servers.cc_agent_delegate.startup_timeout_sec=30","-c","mcp_servers.cc_agent_delegate.tool_timeout_sec=600","-c","mcp_servers.detached_command.command=\"node\"","-c","mcp_servers.detached_command.args=[\"/home/ashish/.vscode/extensions/qapandaapp.qapanda-vscode-0.3.4/detached-command-mcp/dist/index.js\"]","-c","mcp_servers.detached_command.env.DETACHED_BASH_MCP_DATA_DIR=\"/run/media/ashish/EC705044705017A2/Builders/.qpanda/.detached-jobs\"","-c","mcp_servers.detached_command.startup_timeout_sec=30","-c","features.shell_tool=false","-c","features.tool_search=false","-c","features.search_tool=false","-c","features.tool_search_always_defer_mcp_tools=false"]
+[2026-09-06T14:03:46.244Z] [codex-appserver] sendRequest:start method=initialize id=1 threadId=null turnId=null
+[2026-09-06T14:03:46.246Z] [codex-appserver] process:error cwd=/run/media/ashish/EC705044705017A2/Builders message=spawn codex ENOENT
+[2026-09-06T14:03:46.246Z] [codex-appserver] crash reason=Process error: spawn codex ENOENT
+[2026-09-06T14:03:46.247Z] [codex-appserver] process:error cwd=/run/media/ashish/EC705044705017A2/Builders message=spawn codex ENOENT
+[2026-09-06T14:03:46.247Z] [codex-appserver] crash reason=Process error: spawn codex ENOENT
+[2026-09-06T14:03:46.250Z] [codex-appserver] process:close cwd=/run/media/ashish/EC705044705017A2/Builders code=-2
+[2026-09-06T14:03:46.250Z] [codex-appserver] crash reason=Process exited unexpectedly (code=-2)
+[2026-09-06T14:03:46.250Z] [codex-appserver] process:close cwd=/run/media/ashish/EC705044705017A2/Builders code=-2
+[2026-09-06T14:03:46.250Z] [codex-appserver] crash reason=Process exited unexpectedly (code=-2)
+[2026-09-06T14:03:46.251Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:03:46.253Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:03:46.254Z] onboardingDetected received
+[2026-09-06T14:03:56.663Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:03:56.663Z] onboardingDetected received
+[2026-09-06T14:04:07.385Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.389Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.389Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.390Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.390Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.390Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.391Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.392Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.392Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.395Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.396Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:04:07.416Z] MSG received: type=onboardingFixDone hasHandler=true
+[2026-09-06T14:07:04.064Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:07:04.123Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:07:04.317Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:07:04.372Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:08:19.684Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:08:19.748Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:08:23.368Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:08:23.369Z] onboardingDetected received
+[2026-09-06T14:08:25.792Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.794Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.794Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.794Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.795Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.795Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.795Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.795Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.799Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.800Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.800Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.801Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.801Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.802Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.804Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.805Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.805Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:08:25.820Z] MSG received: type=onboardingFixDone hasHandler=true
+[2026-09-06T14:08:58.628Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:08:58.682Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:11:58.152Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:11:58.204Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:12:06.229Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:12:06.230Z] onboardingDetected received
+[2026-09-06T14:12:08.865Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.867Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.868Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.868Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.868Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.869Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.871Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.872Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.872Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.873Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.873Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.874Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.874Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.875Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.876Z] MSG received: type=onboardingFixProgress hasHandler=true
+[2026-09-06T14:12:08.891Z] MSG received: type=onboardingFixDone hasHandler=true
+[2026-09-06T14:13:54.477Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:13:54.542Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:13:57.336Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:13:57.336Z] onboardingDetected received
+[2026-09-06T14:16:10.916Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:16:10.982Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:16:11.294Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:16:11.295Z] onboardingDetected received
+[2026-09-06T14:16:14.342Z] MSG received: type=onboardingDetected hasHandler=true
+[2026-09-06T14:16:14.342Z] onboardingDetected received
+[2026-09-06T14:16:38.706Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:16:38.770Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:17:34.876Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:17:34.944Z] MSG received: type=reviewState hasHandler=true
+[2026-09-06T14:17:39.595Z] EXT-HOST: forwarding to session.handleMessage type=reviewStateRequest
+[2026-09-06T14:17:39.663Z] MSG received: type=reviewState hasHandler=true
