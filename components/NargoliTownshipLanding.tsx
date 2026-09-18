@@ -21,6 +21,7 @@ import {
   Zap,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { defaultProjectSettings, readProjectSettings, saveLead } from '@/lib/admin-data';
 import ShaderHero from './ShaderHero';
 
 const MIN_PLOT_AREA = 3000;
@@ -30,13 +31,6 @@ const minimumPlotCost = MIN_PLOT_AREA * PROJECT_RATE;
 const whatsappUrl = `https://wa.me/9082313345?text=${encodeURIComponent(
   "Hello Om Sai Developers, I'd like to know more about the 10-acre township plots at Nargoli, Dapoli.",
 )}`;
-
-const projectStats = [
-  { value: '10', label: 'Acre township project' },
-  { value: '3,000', label: 'Sq. ft. minimum plot' },
-  { value: '₹750', label: 'Rate per sq. ft.' },
-  { value: '210/230 km', label: 'From Pune/Mumbai' },
-];
 
 const projectDetails: { icon: LucideIcon; title: string; copy: string }[] = [
   {
@@ -200,6 +194,18 @@ function LeadForm({ compact = false, onSuccess }: { compact?: boolean; onSuccess
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    saveLead({
+      id: typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}`,
+      name: String(formData.get('name') || ''),
+      phone: String(formData.get('phone') || ''),
+      email: String(formData.get('email') || ''),
+      size: String(formData.get('size') || ''),
+      horizon: String(formData.get('horizon') || ''),
+      visitDate: String(formData.get('visitDate') || ''),
+      createdAt: new Date().toISOString(),
+      status: 'New',
+    });
     setSubmitted(true);
     onSuccess?.();
   };
@@ -282,8 +288,20 @@ export default function NargoliTownshipLanding() {
   const [visitModalOpen, setVisitModalOpen] = useState(false);
   const [selectedGalleryIndex, setSelectedGalleryIndex] = useState<number | null>(null);
   const [area, setArea] = useState(MIN_PLOT_AREA);
-  const plotCost = area * PROJECT_RATE;
+  const [projectSettings, setProjectSettings] = useState(defaultProjectSettings);
+  const plotCost = area * projectSettings.rate;
+  const projectStats = [
+    { value: '10', label: 'Acre township project' },
+    { value: projectSettings.minimumPlotArea.toLocaleString('en-IN'), label: 'Sq. ft. minimum plot' },
+    { value: `₹${projectSettings.rate.toLocaleString('en-IN')}`, label: 'Rate per sq. ft.' },
+    { value: `${projectSettings.availablePlots}`, label: 'Plots currently available' },
+  ];
   const selectedGalleryImage = selectedGalleryIndex === null ? null : galleryImages[selectedGalleryIndex];
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setProjectSettings(readProjectSettings()));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     if (selectedGalleryIndex === null) return;
@@ -400,8 +418,11 @@ export default function NargoliTownshipLanding() {
                 10-acre township plots in <span className="text-[#f4bd9e]">Dapoli.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-[#e7eee8] md:text-lg">
-                Own a demarcated plot from 3,000 sq. ft. at ₹750 / sq. ft. in Nargoli, Dapoli, with
+                Own a demarcated plot from {projectSettings.minimumPlotArea.toLocaleString('en-IN')} sq. ft. at ₹{projectSettings.rate.toLocaleString('en-IN')} / sq. ft. in Nargoli, Dapoli, with
                 internal roads, utilities, garden, swimming pool and club house amenities planned for the township.
+              </p>
+              <p className="mt-4 max-w-2xl border-l-2 border-[#f4bd9e] pl-3 text-sm leading-6 text-[#f6d9c6]">
+                <strong className="font-bold text-white">{projectSettings.status}</strong> · {projectSettings.announcement}
               </p>
               <div className="builder-proof mt-7">
                 <span>
@@ -599,11 +620,11 @@ export default function NargoliTownshipLanding() {
                   </p>
                   <p>
                     <strong className="block text-[#16352a]">Plot size</strong>
-                    Minimum 3,000 sq. ft.
+                    Minimum {projectSettings.minimumPlotArea.toLocaleString('en-IN')} sq. ft.
                   </p>
                   <p>
                     <strong className="block text-[#16352a]">Rate</strong>
-                    ₹750 / sq. ft.
+                    ₹{projectSettings.rate.toLocaleString('en-IN')} / sq. ft.
                   </p>
                   <p>
                     <strong className="block text-[#16352a]">Connectivity</strong>
